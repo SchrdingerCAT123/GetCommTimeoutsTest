@@ -1,0 +1,32 @@
+#include <Windows.h>
+#include <time.h>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main(void)
+{
+	HWND mhwnd = FindWindow(L"Notepad", NULL);
+	RECT rc;
+	GetWindowRect(mhwnd, &rc);
+	cout << "1:(" << rc.left << "," << rc.top << "," << rc.right << "," << rc.bottom << ")" << endl;
+
+	SetWindowPos(mhwnd, HWND_TOP, 0, 200, 200, 100, SWP_NOREDRAW);
+	GetWindowRect(mhwnd, &rc);
+	cout << "2:(" << rc.left << "," << rc.top << "," << rc.right << "," << rc.bottom << ")" << endl;
+
+	SetWindowPos(mhwnd, HWND_TOP, -1, 200, 200, 100, SWP_NOREDRAW);
+	GetWindowRect(mhwnd, &rc);
+	cout << "3:(" << rc.left << "," << rc.top << "," << rc.right << "," << rc.bottom << ")" << endl;
+
+	SetWindowPos(mhwnd, HWND_TOP, -1, 60, 200, 100, SWP_NOREDRAW);
+	GetWindowRect(mhwnd, &rc);
+	cout << "4:(" << rc.left << "," << rc.top << "," << rc.right << "," << rc.bottom << ")" << endl;
+
+	SetWindowPos(mhwnd, HWND_TOP, -1, 600, 200, 100, SWP_NOREDRAW);
+	GetWindowRect(mhwnd, &rc);
+	cout << "5:(" << rc.left << "," << rc.top << "," << rc.right << "," << rc.bottom << ")" << endl;
+
+	return 0;
+}
